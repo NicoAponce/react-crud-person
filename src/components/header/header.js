@@ -10,6 +10,11 @@ const Header = () => {
                         PERSONA
                     </Link>
                 </li>
+                <li className="nav-item">
+                    <Link to="/place" className="nav-link _color_text_white">
+                        LUGAR
+                    </Link>
+                </li>
             </ul>
         </nav>
     );

@@ -1,11 +1,11 @@
 import Swal from 'sweetalert2';
-import PersonService from '../../../services/person-services';
+import PlaceService from '../../../services/place-service';
 
-const usePersonDelete = (id) => {
+const usePlaceDelete = (id) => {
     const onClickDelete = () => {
         Swal.fire({
             title: 'Estas seguro',
-            text: 'Se eliminara a esta persona',
+            text: 'Se eliminara este lugar',
             icon: 'warning',
             showCancelButton: true,
             confirmButtonColor: '#3085d6',
@@ -14,11 +14,11 @@ const usePersonDelete = (id) => {
             confirmButtonText: 'Si',
         }).then((result) => {
             if (result.value) {
-                PersonService.deletePerson(id).then(() => {
+                PlaceService.deletePlace(id).then(() => {
                     Swal.fire({
                         position: 'top-center',
                         icon: 'success',
-                        title: 'Persona eliminada',
+                        title: 'Lugar eliminado',
                         showConfirmButton: false,
                         timer: 1600,
                     });
@@ -29,5 +29,4 @@ const usePersonDelete = (id) => {
     };
     return {onClickDelete};
 };
-
-export default usePersonDelete;
+export default usePlaceDelete;
