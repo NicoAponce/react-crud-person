@@ -8,6 +8,7 @@ import AddPerson from './containers/person/containers/add-person';
 import Place from './containers/place/place';
 import AddPlace from './containers/place/container/add-place';
 import store from './redux/store';
+import Province from './containers/province/province';
 
 const App = () => {
     return (
@@ -22,6 +23,8 @@ const App = () => {
                     <Route exact path="/place" component={Place} />
                     <Route exact path="/place/new" component={AddPlace} />
                     <Route exact path="/place/edit/:id" component={AddPlace} />
+
+                    <Route exact path="/province" component={Province} />
                 </Switch>
             </Provider>
         </BrowserRouter>

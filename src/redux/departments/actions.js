@@ -4,20 +4,20 @@ import {
     DEPARTMENT_SELECT_FAILURE,
 } from './types';
 
-export const departamentSelectRequest = () => {
+export const departmentSelectRequest = () => {
     return {
         type: DEPARTMENT_SELECT_REQUEST,
     };
 };
 
-export const departamentSelectSuccess = (payload) => {
+export const departmentSelectSuccess = (payload) => {
     return {
         type: DEPARTMENT_SELECT_SUCCESS,
         payload,
     };
 };
 
-export const departamentSelectFailure = (payload) => {
+export const departmentSelectFailure = (payload) => {
     return {
         type: DEPARTMENT_SELECT_FAILURE,
         payload,

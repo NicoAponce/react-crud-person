@@ -8,7 +8,7 @@ const DetailPlace = ({place}) => {
         <tr>
             <td>{place.name}</td>
             <td>{place.description}</td>
-            <td>{place.departament}</td>
+            <td>{place.department}</td>
             <td>{place.province}</td>
             <td>{place.district}</td>
             <td>

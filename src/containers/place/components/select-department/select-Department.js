@@ -9,7 +9,7 @@ const SelectDepartment = forwardRef(({error, onChange, departments, ...rest}, re
                 className={`form-control ${invalidClass}`}
                 onChange={onChange}
                 ref={ref}
-                name="idDepartament"
+                name="idDepartment"
                 {...rest}
             >
                 <option value="">SELECCIONE UN DEPARTAMENTO</option>
@@ -17,7 +17,7 @@ const SelectDepartment = forwardRef(({error, onChange, departments, ...rest}, re
                     departments.map((item) => {
                         return (
                             <option key={item.id} value={item.id}>
-                                {item.nameDepartament}
+                                {item.nameDepartment}
                             </option>
                         );
                     })}

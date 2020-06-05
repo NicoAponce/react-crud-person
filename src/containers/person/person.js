@@ -1,10 +1,19 @@
 import React, {memo} from 'react';
 import {Link} from 'react-router-dom';
+import TablePagination from '@material-ui/core/TablePagination';
 import DetailPerson from './containers/detail-person';
 import usePersonSelect from './hooks/use-person-select';
 
 const Person = () => {
-    const {onChangeName, persons} = usePersonSelect();
+    const {
+        onChangeName,
+        persons,
+        page,
+        personsPerPage,
+        emptyPersons,
+        handleChangePage,
+        handleChangePersonsPage,
+    } = usePersonSelect();
     return (
         <div className="container">
             <div className="row justify-content-md-center mt-5">
@@ -40,8 +49,12 @@ const Person = () => {
                                     </tr>
                                 </thead>
                                 <tbody className="text-center">
-                                    {persons &&
-                                        persons.map((item) => {
+                                    {persons
+                                        .slice(
+                                            page * personsPerPage,
+                                            page * personsPerPage + personsPerPage
+                                        )
+                                        .map((item) => {
                                             return (
                                                 <DetailPerson
                                                     key={item.id}
@@ -49,8 +62,22 @@ const Person = () => {
                                                 />
                                             );
                                         })}
+                                    {emptyPersons > 0 && (
+                                        <tr style={{height: 53 * emptyPersons}}>
+                                            <td colSpan={6} />
+                                        </tr>
+                                    )}
                                 </tbody>
                             </table>
+                            <TablePagination
+                                rowsPerPageOptions={[]}
+                                component="div"
+                                count={persons.length}
+                                rowsPerPage={personsPerPage}
+                                page={page}
+                                onChangePage={handleChangePage}
+                                onChangeRowsPerPage={handleChangePersonsPage}
+                            />
                         </div>
                     </div>
                 </div>

@@ -2,7 +2,7 @@ import apiAxios from '../api/api-axios';
 
 class UbigeoService {
     static selectDepartment = () => {
-        return apiAxios.get(`/api/departament`);
+        return apiAxios.get(`/api/department`);
     };
 
     static selectProvince = () => {

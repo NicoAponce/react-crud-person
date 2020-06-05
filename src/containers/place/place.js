@@ -2,9 +2,10 @@ import React from 'react';
 import {Link} from 'react-router-dom';
 import DetailPlace from './container/detail-place';
 import usePlaceSelect from './hooks/use-place-select';
+import Pagination from '../../components/pagination/pagination';
 
 const Place = () => {
-    const {onChangeName, places} = usePlaceSelect();
+    const {onChangeName, places, currentPlaces, placesPage, paginate} = usePlaceSelect();
     return (
         <div className="container">
             <div className="row justify-content-md-center mt-5">
@@ -40,14 +41,19 @@ const Place = () => {
                                     </tr>
                                 </thead>
                                 <tbody className="text-center">
-                                    {places &&
-                                        places.map((item) => {
+                                    {currentPlaces &&
+                                        currentPlaces.map((item) => {
                                             return (
                                                 <DetailPlace key={item.id} place={item} />
                                             );
                                         })}
                                 </tbody>
                             </table>
+                            <Pagination
+                                pages={placesPage}
+                                total={places.length}
+                                paginate={paginate}
+                            />
                         </div>
                     </div>
                 </div>

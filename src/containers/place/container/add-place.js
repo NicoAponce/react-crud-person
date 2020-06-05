@@ -25,7 +25,7 @@ const AddPlace = ({match}) => {
     const {register, errors} = form;
 
     const onChangeDepartment = ({target}) => {
-        onDepartment({idDepartament: target.value});
+        onDepartment({idDepartment: target.value});
     };
 
     const onChangeProvince = ({target}) => {
@@ -57,7 +57,7 @@ const AddPlace = ({match}) => {
                                     ref={register}
                                     onChange={onChangeDepartment}
                                     departments={departments}
-                                    error={errors.idDepartament}
+                                    error={errors.idDepartment}
                                 />
                                 <SelectProvince
                                     ref={register}

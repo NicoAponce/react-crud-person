@@ -57,22 +57,24 @@ const usePlaceInsert = (id = 0) => {
                 ? PlaceService.updatePlace(id, {id, ...values})
                 : PlaceService.insertPlace(values);
 
-        promise.then(() => {
-            Swal.fire({
-                position: 'top-center',
-                icon: 'success',
-                title: 'Lugar guardado',
-                showConfirmButton: false,
-                timer: 1500,
-            }).catch(() => {
+        promise
+            .then(() => {
+                Swal.fire({
+                    position: 'top-center',
+                    icon: 'success',
+                    title: 'Lugar guardado',
+                    showConfirmButton: false,
+                    timer: 1500,
+                });
+                history.push('/place');
+            })
+            .catch(() => {
                 Swal.fire({
                     icon: 'error',
                     title: 'Oops...',
                     text: 'Algo salio mal',
                 });
             });
-            history.push(`/place`);
-        });
     };
 
     useEffect(() => {

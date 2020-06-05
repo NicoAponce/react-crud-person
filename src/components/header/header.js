@@ -15,6 +15,11 @@ const Header = () => {
                         LUGAR
                     </Link>
                 </li>
+                <li className="nav-item">
+                    <Link to="/province" className="nav-link _color_text_white">
+                        PROVINCIA
+                    </Link>
+                </li>
             </ul>
         </nav>
     );

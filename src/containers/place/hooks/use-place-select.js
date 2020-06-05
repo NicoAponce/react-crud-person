@@ -3,7 +3,7 @@ import Swal from 'sweetalert2';
 import {useDispatch} from 'react-redux';
 import PlaceService from '../../../services/place-service';
 import UbigeoService from '../../../services/ubigeo-service';
-import {departamentSelectSuccess} from '../../../redux/departments/actions';
+import {departmentSelectSuccess} from '../../../redux/departments/actions';
 import {provinceSelectSuccess} from '../../../redux/provinces/actions';
 import {districtSelectSuccess} from '../../../redux/districts/actions';
 
@@ -11,6 +11,16 @@ const usePlaceSelect = () => {
     const [places, setPlaces] = useState([]);
     const [name, setNama] = useState('');
     const dispatch = useDispatch();
+
+    const [currentPage, setCurrentPage] = useState(1);
+    const [placesPage] = useState(5);
+    const indexOfLastPlace = currentPage * placesPage;
+    const indexOfFirstPlace = indexOfLastPlace - placesPage;
+    const currentPlaces = places.slice(indexOfFirstPlace, indexOfLastPlace);
+
+    const paginate = (pageNumber) => {
+        setCurrentPage(pageNumber);
+    };
 
     const onChangeName = ({target}) => {
         setNama(target.value);
@@ -31,7 +41,7 @@ const usePlaceSelect = () => {
 
     useEffect(() => {
         UbigeoService.selectDepartment().then(({data}) => {
-            dispatch(departamentSelectSuccess(data.result));
+            dispatch(departmentSelectSuccess(data.result));
         });
     }, [dispatch]);
     useEffect(() => {
@@ -45,7 +55,7 @@ const usePlaceSelect = () => {
         });
     }, [dispatch]);
 
-    return {onChangeName, places};
+    return {onChangeName, places, currentPlaces, placesPage, paginate};
 };
 
 export default usePlaceSelect;
